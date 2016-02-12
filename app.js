@@ -46,13 +46,14 @@ function darekagakaita() {
       var itemId = [1,2,3,4,5,6,7,9][Math.floor(Math.random() * 8)]
       var params = {
         texture: img,
-        title: date.getFullYear() + '年' + ('0' + (date.getMonth() + 1)).slice(-2) + '月' + date.getDate() + '日' + date.getHours() + '時' + date.getMinutes() + '分' + date.getSeconds() + '秒',
+        title: date.getFullYear() + '年' + ('0' + (date.getMonth() + 1)).slice(-2) + '月' + date.getDate() + '日' + ('0' + date.getHours()).slice(-2) + '時' + ('0' + date.getMinutes()).slice(-2) + '分',
         description: content,
         products: [
           {
             itemId: itemId,
             published: true,
-            resizeMode: 'contain'
+            resizeMode: 'contain',
+            exemplaryAngle: 'left'
           }
         ]
       }
