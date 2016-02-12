@@ -12,11 +12,11 @@ const API_KEY = "hogeraccho"
 
 const url = 'http://darekagakaku.herokuapp.com'
 
-var chunks = []
 var content = ''
 var prevContent = ''
 
 function darekagakaita() {
+  var chunks = []
   fetch(url)
     .then(res => res.text())
     .then(text => {
