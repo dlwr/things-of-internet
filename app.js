@@ -43,19 +43,21 @@ function darekagakaita() {
     })
     .then(img => {
       var date = new Date
-      var itemId = [1,2,3,4,5,6,7,9][Math.floor(Math.random() * 8)]
+      var itemId = [1,2,3,5,6,7,9][Math.floor(Math.random() * 7)]
+      var product = {
+        itemId: itemId,
+        published: true,
+        resizeMode: 'contain',
+        exemplaryAngle: 'left'
+      }
+      if (itemId === 3) {
+        product.exemplaryAngle = 'left'
+      }
       var params = {
         texture: img,
         title: date.getFullYear() + '年' + ('0' + (date.getMonth() + 1)).slice(-2) + '月' + date.getDate() + '日' + ('0' + date.getHours()).slice(-2) + '時' + ('0' + date.getMinutes()).slice(-2) + '分',
         description: content,
-        products: [
-          {
-            itemId: itemId,
-            published: true,
-            resizeMode: 'contain',
-            exemplaryAngle: 'left'
-          }
-        ]
+        products: [ product ]
       }
       return fetch('https://suzuri.jp/api/v1/materials', {
         headers: {
@@ -70,7 +72,9 @@ function darekagakaita() {
       console.log('変わってたから作った')
       console.log(content)
       prevContent = content
+      return res.text()
     })
+    .then(text => {console.log(text)})
 }
 
 var job = new cronJob({
