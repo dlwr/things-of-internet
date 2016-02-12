@@ -21,8 +21,8 @@ function darekagakaita() {
     .then(res => res.text())
     .then(text => {
       $ = cheerio.load(text)
-      content = $('div.content').text().replace(/About \| EditMe$/, '')
-      if (content === prevContent) {
+      content = $('div.content').text().replace(/About \| EditMe$/, '').replace(/^\d{1,4}年\d{1,2}月\d{1,2}日\s*/, '')
+      if (content === prevContent || content === '') {
         console.log ('変わってなかった')
         return Promise.reject()
       }
@@ -44,11 +44,10 @@ function darekagakaita() {
     .then(img => {
       var date = new Date
       var itemId = [1,2,3,4,5,6,7,9][Math.floor(Math.random() * 8)]
-      var description = content.replace(/^\d{1,4}年\d{1,2}月\d{1,2}日/, '')
       var params = {
         texture: img,
         title: date.getFullYear() + '年' + ('0' + (date.getMonth() + 1)).slice(-2) + '月' + date.getDate() + '日' + date.getHours() + '時' + date.getMinutes() + '分' + date.getSeconds() + '秒',
-        description: description,
+        description: content,
         products: [
           {
             itemId: itemId,
