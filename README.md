@@ -18,7 +18,7 @@
 
 ##### `API_KEY`
 
-[SUZURI API](https://suzuri.jp/developer)を利用するためのキーです。SUZURIアカウント取得後、 https://suzuri.jp/developer/developer/apps で取得できます。
+[SUZURI API](https://suzuri.jp/developer)を利用するためのキーです。SUZURIアカウント取得後、 https://suzuri.jp/developer/apps で取得できます。
 
 ##### `URL`
 モノに変えたいURLです。
