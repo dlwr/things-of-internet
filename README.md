@@ -47,9 +47,9 @@ git push heroku master
 
 ### refs.
 
-[darekagakaita](https://github.com/dlwr/darekagakaita)
+[dlwr/darekagakaita](https://github.com/dlwr/darekagakaita)
 
-[pageres](https://github.com/sindresorhus/pageres)
+[sindresorhus/pageres](https://github.com/sindresorhus/pageres)
 
 [SUZURI](https://suzuri.jp)
 
