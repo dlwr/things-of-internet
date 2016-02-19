@@ -4,30 +4,34 @@ const cheerio = require('cheerio')
 const cronJob = require('cron').CronJob
 const http = require('http')
 
-const options = {
-  selector: 'div.content',
-  css: 'div.right {display: none!important;}'
-}
-const API_KEY = "hogeraccho"
+// get from https://suzuri.jp/developer/apps
+const API_KEY   = "YOUR_SUZURI_API_KEY"
+// page url you want to archive
+const URL       = 'http://page.to.archive/page/to/archive'
+// target DOM to archive. (if you want to all of page, set to 'body')
+const SELECTOR  = '#content.you-want-to-archive'
+// cron time. '0 0 0 * * *' is means that this app archive target page on 00:00 every day
+const CRON_TIME = '0 0 0 * * *'
 
-const url = 'http://darekagakaku.herokuapp.com'
+const options = {
+  selector: SELECTOR
+}
 
 var content = ''
 var prevContent = ''
 
-function darekagakaita() {
+function archive() {
   var chunks = []
-  fetch(url)
+  fetch(URL)
     .then(res => res.text())
     .then(text => {
       $ = cheerio.load(text)
-      content = $('div.content').text().replace(/About \| EditMe$/, '').replace(/^\d{1,4}年\d{1,2}月\d{1,2}日\s*/, '')
+      content = $(SELECTOR).html()
       if (content === prevContent || content === '') {
-        console.log ('変わってなかった')
         return Promise.reject()
       }
       return new Pageres(options)
-        .src('darekagakaku.herokuapp.com', ['1920x1080'])
+        .src(URL, ['1920x1080'])
         .run()
     })
     .then(result => {
@@ -69,8 +73,6 @@ function darekagakaita() {
       })
     })
     .then(res => {
-      console.log('変わってたから作った')
-      console.log(content)
       prevContent = content
       return res.text()
     })
@@ -78,8 +80,8 @@ function darekagakaita() {
 }
 
 var job = new cronJob({
-  cronTime: '0,30 * * * * *',
-  onTick: darekagakaita,
+  cronTime: CRON_TIME,
+  onTick: archive,
   start: true
 });
 
@@ -93,5 +95,5 @@ http.createServer((request, response) => {
     return;
   }
   response.writeHead(200, {'Content-Type': 'text/plain'})
-  response.end(`誰かが書いた\n${prevContent}\n`)
-}).listen(process.env.OPENSHIFT_NODEJS_PORT || 8080)
+  response.end(`${prevContent}\n`)
+}).listen(process.env.PORT || 8080)
