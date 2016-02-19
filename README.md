@@ -51,4 +51,4 @@ git push heroku master
 
 [SUZURI](https://suzuri.jp)
 
-[誰かが書いた日記](https://suzuri.jp)
+[誰かが書いた日記](https://suzuri.jp/darekagakaita)
