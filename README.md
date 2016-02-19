@@ -1,5 +1,7 @@
 # ToI(Things of Internet)
 
+![アイキャッチ](https://i.gyazo.com/a81ffca66bfa76021f5bf9981074c37e.png)
+
 > インターネットのモノ(Things of Internet,ToI)は、一意に識別可能な「インターネットのページ」が[SUZURI](https://suzuri.jp/)に接続され、API POSTすることにより物質化する仕組みである
 
 > (出展 [Wikipedia 「インターネットのモノ」](https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%8E%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%8D%E3%83%83%E3%83%88))
