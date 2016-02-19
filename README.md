@@ -12,11 +12,13 @@
 
 ### 使用法
 
+比較的新しめのnodeで動きます
+
 #### `app.js` を編集して、以下の定数を変更して下さい
 
 ##### `API_KEY`
 
-[SUZURI API](https://suzuri.jp/api/v1)を利用するためのキーです。SUZURIアカウント取得後、 https://suzuri.jp/api/v1/apps で取得できます。
+[SUZURI API](https://suzuri.jp/developer)を利用するためのキーです。SUZURIアカウント取得後、 https://suzuri.jp/developer/developer/apps で取得できます。
 
 ##### `URL`
 モノに変えたいURLです。
